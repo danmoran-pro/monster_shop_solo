@@ -24,24 +24,25 @@ RSpec.describe 'As a merchant' do
 
         expect(current_path).to eq("/merchant/coupons/new")
 
-        coupon_name = "CheapPhone"
-        coupon_code = "CODE10"
+        name = "CheapPhone"
+        code = "CODE10"
         percentage_off = 10
 
-        fill_in :coupon_name, with: coupon_name
-        fill_in :coupon_code, with: coupon_code
+        fill_in :name, with: name
+        fill_in :code, with: code
         fill_in :percentage_off, with: percentage_off
         click_button "Submit"
 
-        flash = "Coupon #{coupon_name} has been created!"
+        flash = "Coupon #{name} has been created!"
 
         expect(current_path).to eq("/merchant/coupons")
-        expect(page).to have_content(flash)
+
+        coupon  = Coupon.last
 
         within "#coupon-#{coupon.id}" do
-          expect(page).to have_content(coupon_name)
-          expect(page).to have_content(coupon_code)
-          expect(page).to have_content("#{number_to_percentage(percentage_off)}")
+          expect(page).to have_content(coupon.name)
+          expect(page).to have_content(coupon.code)
+          expect(page).to have_content("#{coupon.percentage_off}%")
         end
       end
   end

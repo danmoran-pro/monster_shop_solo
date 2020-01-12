@@ -1,0 +1,13 @@
+<h1>All Coupons</h1>
+<p align="center"><%= link_to "Create New Coupon", "/merchant/coupons/new" %></p>
+<section class = "grid-container">
+  <% @coupons.each do |coupon|%>
+    <section class = "grid-item">
+        <section id="coupon-<%= coupon.id %>">
+          <h2><%=link_to coupon.name, "/merchant/coupon/#{coupon.id}"%></h2>
+          <h2><%=coupon.code%></h2>
+          <h2><%=coupon.percentage_off%>%</h2>
+        </section>
+    </section>
+  <% end %>
+</section>
