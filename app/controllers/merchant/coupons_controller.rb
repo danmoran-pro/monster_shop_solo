@@ -4,6 +4,25 @@ class Merchant::CouponsController < Merchant::BaseController
     @coupons = Coupon.all
   end
 
+  def show
+    @coupon = Coupon.find(params[:id])
+  end
+
+  def edit
+    @coupon = Coupon.find(params[:id])
+  end
+
+  def update
+      @coupon = Coupon.find(params[:id])
+      if @coupon.update(coupon_params)
+        flash[:success] = "Your coupon has been updated!"
+        redirect_to "/merchant/coupons"
+      else
+        flash[:alert] = @coupon.errors.full_messages.to_sentence
+        render :edit
+      end
+    end
+
   def new
     @coupon = Coupon.new
   end
