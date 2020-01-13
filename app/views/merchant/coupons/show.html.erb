@@ -1,0 +1,12 @@
+<h1>Merchant Coupon Page</h1>
+
+<center><h2><%= link_to "Create New Coupon", "/merchant/coupons/new" %></h2></center>
+
+<section class="grid-container">
+<section class="grid-coupon" id="coupon-<%=@coupon.id%>">
+  Coupon: <%=  @coupon.name %><br><br>
+  Code: <%=  @coupon.code %><br><br>
+  Percentage Off:<%= @coupon.percentage_off%>%<br><br>
+  <h2><%= link_to "Edit Coupon", "/merchant/coupons/#{@coupon.id}/edit" %></h2>
+</section>
+</section>

@@ -4,7 +4,7 @@
   <% @coupons.each do |coupon|%>
     <section class = "grid-item">
         <section id="coupon-<%= coupon.id %>">
-          <h4>Coupon:<%=link_to coupon.name, "/merchant/coupon/#{coupon.id}"%></h4>
+          <h4>Coupon:<%=link_to coupon.name, "/merchant/coupons/#{coupon.id}"%></h4>
           <h4>Code:<%=coupon.code%></h4>
           <h4>Percentage Off:<%=coupon.percentage_off%>%</h4>
         </section>
